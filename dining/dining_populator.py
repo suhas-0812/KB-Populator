@@ -15,7 +15,7 @@ def populate_dining(place_name: str, city: str):
     if isinstance(place_data, dict) and isinstance(formatted_output, dict) and "error" not in formatted_output:
         for key, value in place_data.items():
             # Skip Category and Description as they're already handled in formatted_output
-            if key not in ['Category', 'Description', 'reviews', 'Destination L3 (Area)']:
+            if key not in ['Category', 'Description', 'reviews', 'Formatted Address']:
                 formatted_output[key] = value
     
     formatted_output['Name'] = place_name

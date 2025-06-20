@@ -44,6 +44,7 @@ def search_places_with_details(place_name: str, city: str) -> Dict[str, str]:
         
         # Parse JSON response
         results = response.json()
+
         
         # Check if we have places in the response
         places = results.get('places', [])
@@ -56,8 +57,7 @@ def search_places_with_details(place_name: str, city: str) -> Dict[str, str]:
         place = places[0]
         
         # Extract address components for location hierarchy
-        address_components = place.get('addressComponents', [])
-        location_info = extract_location_hierarchy(address_components)
+        location_info = place.get('formattedAddress', 'N/A')
         
         # Extract category from types
         types = place.get('types', [])
@@ -143,10 +143,7 @@ def search_places_with_details(place_name: str, city: str) -> Dict[str, str]:
         
         # Create structured result with all required fields - return single object
         place_data = {
-            'Country': location_info['country'],
-            'Destination L1 (State)': location_info['state'],
-            'Destination L2 (City)': location_info['city'],
-            'Destination L3 (Area)': location_info['area'],
+            "Formatted Address": location_info,
             'Category': category,
             'Description': description,
             'google_rating': google_rating,
@@ -170,45 +167,3 @@ def search_places_with_details(place_name: str, city: str) -> Dict[str, str]:
     except Exception as e:
         print(f"Unexpected error: {e}")
         return {"Unexpected error in Google Places API": e}
-
-def extract_location_hierarchy(address_components: List[Dict[str, Any]]) -> Dict[str, str]:
-    """
-    Helper function to extract location hierarchy from address components
-    """
-    components = {
-        'country': 'N/A',
-        'state': 'N/A',
-        'city': 'N/A', 
-        'area': 'N/A'
-    }
-    
-    for component in address_components:
-        types = component.get('types', [])
-        long_name = component.get('longText', '')
-        
-        if 'country' in types:
-            components['country'] = long_name
-        elif 'administrative_area_level_1' in types:  # State/Province
-            components['state'] = long_name
-        elif 'locality' in types:  # Prioritize locality for city name
-            components['city'] = long_name
-        elif 'administrative_area_level_2' in types and components['city'] == 'N/A':  # Only use if no locality found
-            components['city'] = long_name
-        # Area extraction - using more commonly available types
-        elif components['area'] == 'N/A':  # Only set area if not already found
-            if ('sublocality' in types or 'sublocality_level_1' in types or 
-                'sublocality_level_2' in types or 'sublocality_level_3' in types):
-                components['area'] = long_name  # Preferred area types
-            elif 'neighborhood' in types:
-                components['area'] = long_name  # Neighborhood
-            elif 'administrative_area_level_3' in types:
-                components['area'] = long_name  # Administrative area level 3
-            elif 'route' in types:
-                components['area'] = long_name  # Street/Road name as area
-            elif 'postal_code' in types:
-                components['area'] = long_name  # Postal code as area identifier
-    
-    return components
-
-
-    

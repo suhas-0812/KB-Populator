@@ -29,6 +29,7 @@ def analyze_place_with_perplexity(place_name: str, city: str, places_api_output:
     google_category = places_api_output.get('Category', 'N/A')
     google_rating = places_api_output.get('google_rating', 'N/A')
     reviews = places_api_output.get('reviews', [])
+    formatted_address = places_api_output.get('Formatted Address', 'N/A')
     
     # Prepare reviews text for analysis (first 5 reviews)
     reviews_text = ""
@@ -46,6 +47,7 @@ Google Category: {google_category}
 Google Description: {google_description}
 Google Rating: {google_rating}
 Sample Reviews: {reviews_text}
+Formatted Address: {formatted_address}
 
 RECOMMENDATION RESEARCH INSTRUCTIONS:
 1. Research through multiple reliable sources including:
@@ -74,7 +76,10 @@ RECOMMENDATION RESEARCH INSTRUCTIONS:
 Based on your comprehensive research, provide recommendations in JSON format:
 
 {{
-    "Area": "The area of the restaurant, extracted from the Google Places API if it accurately describes the area of the restaurant, else populate it with the accurate area"",
+    "Country": "The country of the place, extracted from the Formatted Address if it accurately describes the country of the place, else populate it with the accurate country",
+    "State": "The state of the place, extracted from the Formatted Address if it accurately describes the state of the place, else populate it with the accurate state",
+    "City": "The city of the place, extracted from the Formatted Address if it accurately describes the city of the place, else populate it with the accurate city",
+    "Area": "The area of the place, extracted from the Formatted Address if it accurately describes the area of the place, else populate it with the accurate area",
     "Category": "Primary category with recommendation context. It must always be one of - [Accomodation - Wellness, Accomodation - Boutique / Villa / Homestay,  Accomodation - Haveli, Accomodation - Hotel / Resorts]",
     "Description": "A short single line description of the place. Recommendation-focused description explaining why visitors should choose this place, what unique experiences it offers, and what makes it special. Include specific recommendations about what to do, see, or experience here.",
     "Pool": "Yes/No - Recommended for pool lovers? Include details about pool experience if this is a highlight.",

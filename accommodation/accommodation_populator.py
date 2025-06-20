@@ -8,10 +8,7 @@ def populate_accommodation(accommodation_name, city):
         return places_api_output
     
     places_context_for_llms = {
-        "Country": places_api_output["Country"],
-        "Destination L1 (State)": places_api_output["Destination L1 (State)"],
-        "Destination L2 (City)": places_api_output["Destination L2 (City)"],
-        "Destination L3 (Area)": places_api_output["Destination L3 (Area)"],
+        "Formatted Address": places_api_output["Formatted Address"],
         "Description": places_api_output["Description"],
         "google_rating": places_api_output["google_rating"],
         "Category": places_api_output["Category"],

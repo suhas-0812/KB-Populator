@@ -32,6 +32,7 @@ def analyze_dining_with_perplexity(place_name: str, city: str, places_api_output
     opening_hours = places_api_output.get('opening_hours', 'N/A')
     reviews = places_api_output.get('reviews', [])
     website = places_api_output.get('website', 'N/A')
+    formatted_address = places_api_output.get('Formatted Address', 'N/A')
     
     # Prepare reviews text for analysis (Google Places API returns max 5 reviews by default)
     reviews_text = ""
@@ -57,6 +58,7 @@ Google Rating: {google_rating}
 Opening Hours: {hours_text}
 Website: {website}
 Sample Reviews: {reviews_text}
+Formatted Address: {formatted_address}
 
 RESEARCH INSTRUCTIONS:
 1. Research through multiple reliable sources including:
@@ -81,8 +83,10 @@ RESEARCH INSTRUCTIONS:
 
 Based on your comprehensive research, provide information in JSON format:
 
-{{
-    "Area": "string - The area of the restaurant, extracted from the Google Places API if it accurately describes the area of the restaurant, else populate it with the accurate area",
+{{  "Country": "string - The country of the restaurant (Ex - India, USA, etc.), extracted from the Formatted Address if it accurately describes the country of the restaurant, else populate it with the accurate country",
+    "State": "string - The state of the restaurant (Ex - Karnataka, Maharashtra, etc.), extracted from the Formatted Address if it accurately describes the state of the restaurant, else populate it with the accurate state",
+    "City": "string - The city of the restaurant (Ex - Bengaluru, Mumbai, etc.), extracted from the Formatted Address if it accurately describes the city of the restaurant, else populate it with the accurate city",
+    "Area": "string - The area of the restaurant (Ex - Whitefield, Bandra, etc.), extracted from the Formatted Address if it accurately describes the area of the restaurant, else populate it with the accurate area",
     "Description": "Detailed description of the dining establishment, its concept, ambiance, and what makes it special",
     "Recommended_Dishes": "List of signature dishes, popular items, or chef's recommendations (comma-separated)",
     "Meals_Served": {{ 

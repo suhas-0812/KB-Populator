@@ -18,7 +18,7 @@ def populate_activities(activity_name: str, city: str):
     if isinstance(place_details, dict) and isinstance(formatted_output, dict) and "error" not in formatted_output:
         for key, value in place_details.items():
             # Skip Category and Description as they're already handled in formatted_output
-            if key not in ['Category', 'Description', 'reviews']:
+            if key not in ['Category', 'Description', 'reviews', 'Formatted Address']:
                 formatted_output[key] = value
     
     formatted_output['Name'] = activity_name

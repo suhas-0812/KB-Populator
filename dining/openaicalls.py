@@ -38,19 +38,22 @@ PERPLEXITY DATA:
 FORMATTING AND VALIDATION INSTRUCTIONS:
 Create a JSON object with exactly these fields and nested structures, applying strict validation rules:
 
-1. Area: Extract from area either from Google Places or Perplexity data, choose which is the better one
-2. Description: Choose the best description between Google Places and Perplexity (prioritize the more detailed one)
-3. Recommended_Dishes: Extract from Perplexity data (comma-separated list of signature dishes)
-4. Meals_Served: Nested object with boolean values based on opening hours and restaurant type
-5. Private_Dining: MUST be exactly true or false (boolean)
-6. Party: MUST be exactly true or false (boolean)
-7. Service_Style: Nested object with boolean values for each service style
-8. Cuisine: Nested object with boolean values for each cuisine type
-9. Dietary: Nested object with boolean values for dietary options
-10. Guest_Persona: Nested object with boolean values for guest suitability
-11. Vibe: Nested object with boolean values for atmosphere types
-12. Reservation_Recommended: MUST be exactly true or false (boolean)
-13. Alcohol_Served: MUST be exactly true or false (boolean)
+1. Country: Extract from Google Places data/Perplexity data which is more accurate (Ex - India, USA, etc.)
+2. State: Extract from Google Places data/Perplexity data which is more accurate (Ex - Karnataka, Maharashtra, etc.)
+3. City: Extract from Google Places data/Perplexity data which is more accurate (Ex - Bengaluru, Mumbai, etc.)
+4. Area: Extract from Google Places data/Perplexity data which is more accurate (Ex - Whitefield, Bandra, etc.)
+5. Description: Choose the best description between Google Places and Perplexity (prioritize the more detailed one)
+6. Recommended_Dishes: Extract from Perplexity data (comma-separated list of signature dishes)
+7. Meals_Served: Nested object with boolean values based on opening hours and restaurant type
+8. Private_Dining: MUST be exactly true or false (boolean)
+9. Party: MUST be exactly true or false (boolean)
+10. Service_Style: Nested object with boolean values for each service style
+11. Cuisine: Nested object with boolean values for each cuisine type
+12. Dietary: Nested object with boolean values for dietary options
+13. Guest_Persona: Nested object with boolean values for guest suitability
+14. Vibe: Nested object with boolean values for atmosphere types
+15. Reservation_Recommended: MUST be exactly true or false (boolean)
+16. Alcohol_Served: MUST be exactly true or false (boolean)
 
 CRITICAL VALIDATION RULES:
 - ALL boolean fields must be actual boolean values (true/false), not strings ("yes"/"no")
@@ -62,6 +65,9 @@ CRITICAL VALIDATION RULES:
 
 Expected JSON structure:
 {{
+    "Country": "string",
+    "Destination L1 (State)": "string",
+    "Destination L2 (City)": "string",
     "Destination L3 (Area)": "string",
     "Description": "string",
     "Recommended_Dishes": "string",
@@ -192,6 +198,9 @@ Return ONLY the JSON object with properly validated data types and structure, no
                 
                 # Define the expected structure with defaults
                 expected_structure = {
+                    "Country": "N/A",
+                    "Destination L1 (State)": "N/A",
+                    "Destination L2 (City)": "N/A",
                     "Destination L3 (Area)": "N/A",
                     "Description": "N/A",
                     "Recommended_Dishes": "N/A",

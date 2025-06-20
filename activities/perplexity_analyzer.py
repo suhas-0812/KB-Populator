@@ -30,6 +30,7 @@ def analyze_activity_with_perplexity(place_name: str, city: str, places_api_outp
     google_category = places_api_output.get('Category', 'N/A')
     google_rating = places_api_output.get('google_rating', 'N/A')
     reviews = places_api_output.get('reviews', [])
+    formatted_address = places_api_output.get('Formatted Address', 'N/A')
     
     # Prepare reviews text for analysis (first 5 reviews)
     reviews_text = ""
@@ -47,6 +48,7 @@ Google Category: {google_category}
 Google Description: {google_description}
 Google Rating: {google_rating}
 Sample Reviews: {reviews_text}
+Formatted Address: {formatted_address}
 
 RESEARCH INSTRUCTIONS:
 1. Research through multiple reliable sources including:
@@ -70,6 +72,10 @@ RESEARCH INSTRUCTIONS:
 Based on your comprehensive research, provide information in JSON format:
 
 {{
+    "Country": "The country of the place, extracted from the Formatted Address if it accurately describes the country of the place, else populate it with the accurate country",
+    "State": "The state of the place, extracted from the Formatted Address if it accurately describes the state of the place, else populate it with the accurate state",
+    "City": "The city of the place, extracted from the Formatted Address if it accurately describes the city of the place, else populate it with the accurate city",
+    "Area": "The area of the place, extracted from the Formatted Address if it accurately describes the area of the place, else populate it with the accurate area",
     "Category": "Primary category of this attraction/activity (e.g., Historical Site, Adventure Activity, Cultural Experience, Entertainment, Nature/Wildlife, Religious Site, Museum, Theme Park, etc.)",
     "Description": "A detailed description of what visitors can expect, what makes this place special, and key highlights of the experience",
     "Price_Adult_INR": "Adult ticket price in Indian Rupees (number only, e.g., 500). If free, write 0. If pricing varies significantly, provide average price.",

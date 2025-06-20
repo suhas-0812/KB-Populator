@@ -38,10 +38,10 @@ PERPLEXITY RECOMMENDATION DATA:
 FORMATTING INSTRUCTIONS:
 Create a JSON object with exactly these 14 fields:
 
-1. Country: Extract from Google Places data
-2. Destination L1 (State): Extract from Google Places data  
-3. Destination L2 (City): Extract from Google Places data
-4. Destination L3 (Area): Extract from area either from Google Places or Perplexity data, choose which is the better one
+1. Country: Extract from Google Places data/Perplexity data which is more accurate (Ex - India, USA, etc.)
+2. State: Extract from Google Places data/Perplexity data which is more accurate (Ex - Karnataka, Maharashtra, etc.)
+3. City: Extract from Google Places data/Perplexity data which is more accurate (Ex - Bengaluru, Mumbai, etc.)
+4. Area: Extract from Google Places data/Perplexity data which is more accurate (Ex - Whitefield, Bandra, etc.)
 5. Category: Extract from Perplexity data (must be one of: "Accomodation - Wellness", "Accomodation - Boutique / Villa / Homestay", "Accomodation - Haveli", "Accomodation - Hotel / Resorts")
 6. Name: Use the original place name from user input
 7. Description: Choose the best description between Google Places and Perplexity (prioritize the more detailed and informative one)
@@ -64,6 +64,24 @@ IMPORTANT RULES:
 - Choose the most informative description
 
 Return ONLY the JSON object, no additional text.
+
+Expected JSON structure:
+{{
+    "Country": "string",
+    "Destination L1 (State)": "string",
+    "Destination L2 (City)": "string",
+    "Destination L3 (Area)": "string",
+    "Category": "string",
+    "Name": "string",
+    "Description": "string",
+    "Pool": "boolean",
+    "Pet Friendly": "boolean",
+    "View": "boolean",
+    "Kid Friendly": "boolean",
+    "Romantic": "boolean",
+    "Senior Citizen Friendly": "boolean",
+    "Google Rating": "string"
+}}
 """
 
     # Azure OpenAI API call
