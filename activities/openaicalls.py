@@ -166,26 +166,25 @@ Create a JSON object with exactly these fields, applying strict validation rules
 2. State: Extract from Google Places data/Perplexity data which is more accurate (Ex - Karnataka, Maharashtra, etc.)
 3. City: Extract from Google Places data/Perplexity data which is more accurate (Ex - Bengaluru, Mumbai, etc.)
 4. Area: Extract from Google Places data/Perplexity data which is more accurate (Ex - Whitefield, Bandra, etc.)
-5. Category: Extract from Perplexity data (activity type like Historical Site, Adventure Activity, etc.)
-6. Description: Choose the best description between Google Places and Perplexity (prioritize the more detailed one)
-7. Price_Adult_INR: Extract from Perplexity data - MUST be a number only (e.g., 500, not "500 INR")
-8. Price_Child_INR: Extract from Perplexity data - MUST be a number only (e.g., 250, not "250 INR")
-9. Duration: Extract from Perplexity data - MUST be a number representing hours only (e.g., 2.5 for 2.5 hours, 0.5 for 30 minutes, 8 for full day, not "2-3 hours")
-10. Timings: Extract from Perplexity data (e.g., "9:00 AM - 6:00 PM")
-11. Season_Operational_Months: Extract from Perplexity data (e.g., "October to March")
-12. Inclusions: Extract from Perplexity data
-13. Exclusions: Extract from Perplexity data
-14. Must_Do: MUST be exactly true or false (boolean, not "Yes"/"No" strings)
-15. Group_Friendly: MUST be exactly true or false (boolean, not "Yes"/"No" strings)
-16. Offbeat: MUST be exactly true or false (boolean, not "Yes"/"No" strings)
-17. Historic_Cultural: MUST be exactly true or false (boolean, not "Yes"/"No" strings)
-18. Party: MUST be exactly true or false (boolean, not "Yes"/"No" strings)
-19. Pet_Friendly: MUST be exactly true or false (boolean, not "Yes"/"No" strings)
-20. Adventurous: MUST be exactly true or false (boolean, not "Yes"/"No" strings)
-21. Kid_Friendly: MUST be exactly true or false (boolean, not "Yes"/"No" strings)
-22. Romantic: MUST be exactly true or false (boolean, not "Yes"/"No" strings)
-23. Wellness_Relaxation: MUST be exactly true or false (boolean, not "Yes"/"No" strings)
-24. Senior_Citizen_Friendly: MUST be exactly true or false (boolean, not "Yes"/"No" strings)
+5. Description: Choose the best description between Google Places and Perplexity (prioritize the more detailed one)
+6. Price_Adult_INR: Extract from Perplexity data - MUST be a number only (e.g., 500, not "500 INR")
+7. Price_Child_INR: Extract from Perplexity data - MUST be a number only (e.g., 250, not "250 INR")
+8. Duration: Extract from Perplexity data - MUST be a number representing hours only (e.g., 2.5 for 2.5 hours, 0.5 for 30 minutes, 8 for full day, not "2-3 hours")
+9. Timings: Extract from Perplexity data (e.g., "9:00 AM - 6:00 PM")
+10. Season_Operational_Months: Extract from Perplexity data (e.g., "October to March")
+11. Inclusions: Extract from Perplexity data
+12. Exclusions: Extract from Perplexity data
+13. Must_Do: MUST be exactly true or false (boolean, not "Yes"/"No" strings)
+14. Group_Friendly: MUST be exactly true or false (boolean, not "Yes"/"No" strings)
+15. Offbeat: MUST be exactly true or false (boolean, not "Yes"/"No" strings)
+16. Historic_Cultural: MUST be exactly true or false (boolean, not "Yes"/"No" strings)
+17. Party: MUST be exactly true or false (boolean, not "Yes"/"No" strings)
+18. Pet_Friendly: MUST be exactly true or false (boolean, not "Yes"/"No" strings)
+19. Adventurous: MUST be exactly true or false (boolean, not "Yes"/"No" strings)
+20. Kid_Friendly: MUST be exactly true or false (boolean, not "Yes"/"No" strings)
+21. Romantic: MUST be exactly true or false (boolean, not "Yes"/"No" strings)
+22. Wellness_Relaxation: MUST be exactly true or false (boolean, not "Yes"/"No" strings)
+23. Senior_Citizen_Friendly: MUST be exactly true or false (boolean, not "Yes"/"No" strings)
 
 CRITICAL VALIDATION RULES:
 - Duration: Convert any text duration to numeric hours (e.g., "2-3 hours" → 2.5, "30 minutes" → 0.5, "full day" → 8, "half day" → 4)
@@ -217,7 +216,6 @@ Expected JSON structure:
     "Destination L1 (State)": "string",
     "Destination L2 (City)": "string",
     "Destination L3 (Area)": "string",
-    "Category": "string",
     "Description": "string",
     "Price_Adult_INR": "number",
     "Price_Child_INR": "number",
@@ -284,7 +282,7 @@ Expected JSON structure:
                 
                 # Validate required fields exist
                 required_fields = [
-                    "Category", "Description", "Price_Adult_INR", "Price_Child_INR", 
+                    "Description", "Price_Adult_INR", "Price_Child_INR", 
                     "Duration", "Timings", "Season_Operational_Months", "Inclusions", 
                     "Exclusions", "Must_Do", "Group_Friendly", "Offbeat", 
                     "Historic_Cultural", "Party", "Pet_Friendly", "Adventurous", 

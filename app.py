@@ -65,21 +65,26 @@ if pages == "Activities":
                     st.write("**Website Link:** ", data["website"])
                     st.write("**Google Maps Link:** ", data["google_maps_url"])
                     st.write("**Photos:** ")
-                    col1, col2, col3 = st.columns(3)
-                    if data["photo_urls"][0] != "N/A":
-                        col1.image(data["photo_urls"][0], width=200)
-                    else:
-                        col1.write("N/A")
+                    # First row of 5 photos
+                    col1, col2, col3, col4, col5 = st.columns(5)
+                    photos = [col1, col2, col3, col4, col5]
                     
-                    if data["photo_urls"][1] != "N/A":
-                        col2.image(data["photo_urls"][1], width=200)
-                    else:
-                        col2.write("N/A")
+                    for i, col in enumerate(photos):
+                        if data["photo_urls"][i] != "N/A":
+                            col.image(data["photo_urls"][i], width=150)
+                        else:
+                            col.write("N/A")
                     
-                    if data["photo_urls"][2] != "N/A":
-                        col3.image(data["photo_urls"][2], width=200)
-                    else:
-                        col3.write("N/A")
+                    # Second row of 5 photos
+                    col6, col7, col8, col9, col10 = st.columns(5)
+                    photos_row2 = [col6, col7, col8, col9, col10]
+                    
+                    for i, col in enumerate(photos_row2):
+                        photo_index = i + 5  # Photos 5-9
+                        if data["photo_urls"][photo_index] != "N/A":
+                            col.image(data["photo_urls"][photo_index], width=150)
+                        else:
+                            col.write("N/A")
                     
                     # Prepare data for CSV download
                     csv_data = {
@@ -112,7 +117,14 @@ if pages == "Activities":
                         "Google Maps Link": [data["google_maps_url"]],
                         "Photo 1": [data["photo_urls"][0] if data["photo_urls"][0] != "N/A" else ""],
                         "Photo 2": [data["photo_urls"][1] if data["photo_urls"][1] != "N/A" else ""],
-                        "Photo 3": [data["photo_urls"][2] if data["photo_urls"][2] != "N/A" else ""]
+                        "Photo 3": [data["photo_urls"][2] if data["photo_urls"][2] != "N/A" else ""],
+                        "Photo 4": [data["photo_urls"][3] if data["photo_urls"][3] != "N/A" else ""],
+                        "Photo 5": [data["photo_urls"][4] if data["photo_urls"][4] != "N/A" else ""],
+                        "Photo 6": [data["photo_urls"][5] if data["photo_urls"][5] != "N/A" else ""],
+                        "Photo 7": [data["photo_urls"][6] if data["photo_urls"][6] != "N/A" else ""],
+                        "Photo 8": [data["photo_urls"][7] if data["photo_urls"][7] != "N/A" else ""],
+                        "Photo 9": [data["photo_urls"][8] if data["photo_urls"][8] != "N/A" else ""],
+                        "Photo 10": [data["photo_urls"][9] if data["photo_urls"][9] != "N/A" else ""]
                     }
                     
                     df = pd.DataFrame(csv_data)
@@ -178,7 +190,14 @@ if pages == "Activities":
                                     "Google Maps Link": data["google_maps_url"],
                                     "Photo 1": data["photo_urls"][0] if data["photo_urls"][0] != "N/A" else "",
                                     "Photo 2": data["photo_urls"][1] if data["photo_urls"][1] != "N/A" else "",
-                                    "Photo 3": data["photo_urls"][2] if data["photo_urls"][2] != "N/A" else ""
+                                    "Photo 3": data["photo_urls"][2] if data["photo_urls"][2] != "N/A" else "",
+                                    "Photo 4": data["photo_urls"][3] if data["photo_urls"][3] != "N/A" else "",
+                                    "Photo 5": data["photo_urls"][4] if data["photo_urls"][4] != "N/A" else "",
+                                    "Photo 6": data["photo_urls"][5] if data["photo_urls"][5] != "N/A" else "",
+                                    "Photo 7": data["photo_urls"][6] if data["photo_urls"][6] != "N/A" else "",
+                                    "Photo 8": data["photo_urls"][7] if data["photo_urls"][7] != "N/A" else "",
+                                    "Photo 9": data["photo_urls"][8] if data["photo_urls"][8] != "N/A" else "",
+                                    "Photo 10": data["photo_urls"][9] if data["photo_urls"][9] != "N/A" else ""
                                 })
                             else:
                                 # Return empty data if no metadata found
@@ -256,21 +275,26 @@ if pages == "Dining":
                     st.write("**Website Link:** ", data["website"])
                     st.write("**Google Maps Link:** ", data["google_maps_url"])
                     st.write("**Photos:** ")
-                    col1, col2, col3 = st.columns(3)
-                    if data["photo_urls"][0] != "N/A":
-                        col1.image(data["photo_urls"][0], width=200)
-                    else:
-                        col1.write("N/A")
+                    # First row of 5 photos
+                    col1, col2, col3, col4, col5 = st.columns(5)
+                    photos = [col1, col2, col3, col4, col5]
                     
-                    if data["photo_urls"][1] != "N/A":
-                        col2.image(data["photo_urls"][1], width=200)
-                    else:
-                        col2.write("N/A")
+                    for i, col in enumerate(photos):
+                        if data["photo_urls"][i] != "N/A":
+                            col.image(data["photo_urls"][i], width=150)
+                        else:
+                            col.write("N/A")
                     
-                    if data["photo_urls"][2] != "N/A":
-                        col3.image(data["photo_urls"][2], width=200)
-                    else:
-                        col3.write("N/A")
+                    # Second row of 5 photos
+                    col6, col7, col8, col9, col10 = st.columns(5)
+                    photos_row2 = [col6, col7, col8, col9, col10]
+                    
+                    for i, col in enumerate(photos_row2):
+                        photo_index = i + 5  # Photos 5-9
+                        if data["photo_urls"][photo_index] != "N/A":
+                            col.image(data["photo_urls"][photo_index], width=150)
+                        else:
+                            col.write("N/A")
                     
                     # Prepare data for CSV download
                     csv_data = {
@@ -347,7 +371,14 @@ if pages == "Dining":
                         "Google Maps Link": [data["google_maps_url"]],
                         "Photo 1": [data["photo_urls"][0] if data["photo_urls"][0] != "N/A" else ""],
                         "Photo 2": [data["photo_urls"][1] if data["photo_urls"][1] != "N/A" else ""],
-                        "Photo 3": [data["photo_urls"][2] if data["photo_urls"][2] != "N/A" else ""]
+                        "Photo 3": [data["photo_urls"][2] if data["photo_urls"][2] != "N/A" else ""],
+                        "Photo 4": [data["photo_urls"][3] if data["photo_urls"][3] != "N/A" else ""],
+                        "Photo 5": [data["photo_urls"][4] if data["photo_urls"][4] != "N/A" else ""],
+                        "Photo 6": [data["photo_urls"][5] if data["photo_urls"][5] != "N/A" else ""],
+                        "Photo 7": [data["photo_urls"][6] if data["photo_urls"][6] != "N/A" else ""],
+                        "Photo 8": [data["photo_urls"][7] if data["photo_urls"][7] != "N/A" else ""],
+                        "Photo 9": [data["photo_urls"][8] if data["photo_urls"][8] != "N/A" else ""],
+                        "Photo 10": [data["photo_urls"][9] if data["photo_urls"][9] != "N/A" else ""]
                     }
                     
                     df = pd.DataFrame(csv_data)
@@ -458,7 +489,14 @@ if pages == "Dining":
                                     "Google Maps Link": data["google_maps_url"],
                                     "Photo 1": data["photo_urls"][0] if data["photo_urls"][0] != "N/A" else "",
                                     "Photo 2": data["photo_urls"][1] if data["photo_urls"][1] != "N/A" else "",
-                                    "Photo 3": data["photo_urls"][2] if data["photo_urls"][2] != "N/A" else ""
+                                    "Photo 3": data["photo_urls"][2] if data["photo_urls"][2] != "N/A" else "",
+                                    "Photo 4": data["photo_urls"][3] if data["photo_urls"][3] != "N/A" else "",
+                                    "Photo 5": data["photo_urls"][4] if data["photo_urls"][4] != "N/A" else "",
+                                    "Photo 6": data["photo_urls"][5] if data["photo_urls"][5] != "N/A" else "",
+                                    "Photo 7": data["photo_urls"][6] if data["photo_urls"][6] != "N/A" else "",
+                                    "Photo 8": data["photo_urls"][7] if data["photo_urls"][7] != "N/A" else "",
+                                    "Photo 9": data["photo_urls"][8] if data["photo_urls"][8] != "N/A" else "",
+                                    "Photo 10": data["photo_urls"][9] if data["photo_urls"][9] != "N/A" else ""
                                 })
                             else:
                                 # Return empty data if no metadata found
@@ -537,21 +575,26 @@ if pages == "Accommodations":
                     st.write("**Website Link:** ", data["website"])
                     st.write("**Google Maps Link:** ", data["google_maps_url"])
                     st.write("**Photos:** ")
-                    col1, col2, col3 = st.columns(3)
-                    if data["photo_urls"][0] != "N/A":
-                        col1.image(data["photo_urls"][0], width=200)
-                    else:
-                        col1.write("N/A")
+                    # First row of 5 photos
+                    col1, col2, col3, col4, col5 = st.columns(5)
+                    photos = [col1, col2, col3, col4, col5]
                     
-                    if data["photo_urls"][1] != "N/A":
-                        col2.image(data["photo_urls"][1], width=200)
-                    else:
-                        col2.write("N/A")
-
-                    if data["photo_urls"][2] != "N/A":
-                        col3.image(data["photo_urls"][2], width=200)
-                    else:
-                        col3.write("N/A")
+                    for i, col in enumerate(photos):
+                        if data["photo_urls"][i] != "N/A":
+                            col.image(data["photo_urls"][i], width=150)
+                        else:
+                            col.write("N/A")
+                    
+                    # Second row of 5 photos
+                    col6, col7, col8, col9, col10 = st.columns(5)
+                    photos_row2 = [col6, col7, col8, col9, col10]
+                    
+                    for i, col in enumerate(photos_row2):
+                        photo_index = i + 5  # Photos 5-9
+                        if data["photo_urls"][photo_index] != "N/A":
+                            col.image(data["photo_urls"][photo_index], width=150)
+                        else:
+                            col.write("N/A")
                     
                     # Prepare data for CSV download
                     csv_data = {
@@ -573,7 +616,14 @@ if pages == "Accommodations":
                         "Google Maps Link": [data["google_maps_url"]],
                         "Photo 1": [data["photo_urls"][0] if data["photo_urls"][0] != "N/A" else ""],
                         "Photo 2": [data["photo_urls"][1] if data["photo_urls"][1] != "N/A" else ""],
-                        "Photo 3": [data["photo_urls"][2] if data["photo_urls"][2] != "N/A" else ""]
+                        "Photo 3": [data["photo_urls"][2] if data["photo_urls"][2] != "N/A" else ""],
+                        "Photo 4": [data["photo_urls"][3] if data["photo_urls"][3] != "N/A" else ""],
+                        "Photo 5": [data["photo_urls"][4] if data["photo_urls"][4] != "N/A" else ""],
+                        "Photo 6": [data["photo_urls"][5] if data["photo_urls"][5] != "N/A" else ""],
+                        "Photo 7": [data["photo_urls"][6] if data["photo_urls"][6] != "N/A" else ""],
+                        "Photo 8": [data["photo_urls"][7] if data["photo_urls"][7] != "N/A" else ""],
+                        "Photo 9": [data["photo_urls"][8] if data["photo_urls"][8] != "N/A" else ""],
+                        "Photo 10": [data["photo_urls"][9] if data["photo_urls"][9] != "N/A" else ""]
                     }
                     
                     df = pd.DataFrame(csv_data)
@@ -628,7 +678,14 @@ if pages == "Accommodations":
                                     "Google Maps Link": data["google_maps_url"],
                                     "Photo 1": data["photo_urls"][0] if data["photo_urls"][0] != "N/A" else "",
                                     "Photo 2": data["photo_urls"][1] if data["photo_urls"][1] != "N/A" else "",
-                                    "Photo 3": data["photo_urls"][2] if data["photo_urls"][2] != "N/A" else ""
+                                    "Photo 3": data["photo_urls"][2] if data["photo_urls"][2] != "N/A" else "",
+                                    "Photo 4": data["photo_urls"][3] if data["photo_urls"][3] != "N/A" else "",
+                                    "Photo 5": data["photo_urls"][4] if data["photo_urls"][4] != "N/A" else "",
+                                    "Photo 6": data["photo_urls"][5] if data["photo_urls"][5] != "N/A" else "",
+                                    "Photo 7": data["photo_urls"][6] if data["photo_urls"][6] != "N/A" else "",
+                                    "Photo 8": data["photo_urls"][7] if data["photo_urls"][7] != "N/A" else "",
+                                    "Photo 9": data["photo_urls"][8] if data["photo_urls"][8] != "N/A" else "",
+                                    "Photo 10": data["photo_urls"][9] if data["photo_urls"][9] != "N/A" else ""
                                 })
                             else:
                                 # Return empty data if no metadata found
@@ -666,4 +723,3 @@ if pages == "Accommodations":
                         
             except Exception as e:
                 st.error(f"Error processing file: {str(e)}")
-

@@ -31,6 +31,7 @@ def analyze_activity_with_perplexity(place_name: str, city: str, places_api_outp
     google_rating = places_api_output.get('google_rating', 'N/A')
     reviews = places_api_output.get('reviews', [])
     formatted_address = places_api_output.get('Formatted Address', 'N/A')
+    opening_hours = places_api_output.get('opening_hours', 'N/A')
     
     # Prepare reviews text for analysis (first 5 reviews)
     reviews_text = ""
@@ -49,6 +50,7 @@ Google Description: {google_description}
 Google Rating: {google_rating}
 Sample Reviews: {reviews_text}
 Formatted Address: {formatted_address}
+Opening Hours: {opening_hours}
 
 RESEARCH INSTRUCTIONS:
 1. Research through multiple reliable sources including:
@@ -76,7 +78,6 @@ Based on your comprehensive research, provide information in JSON format:
     "State": "The state of the place, extracted from the Formatted Address if it accurately describes the state of the place, else populate it with the accurate state",
     "City": "The city of the place, extracted from the Formatted Address if it accurately describes the city of the place, else populate it with the accurate city",
     "Area": "The area of the place, extracted from the Formatted Address if it accurately describes the area of the place, else populate it with the accurate area",
-    "Category": "Primary category of this attraction/activity (e.g., Historical Site, Adventure Activity, Cultural Experience, Entertainment, Nature/Wildlife, Religious Site, Museum, Theme Park, etc.)",
     "Description": "A detailed description of what visitors can expect, what makes this place special, and key highlights of the experience",
     "Price_Adult_INR": "Adult ticket price in Indian Rupees (number only, e.g., 500). If free, write 0. If pricing varies significantly, provide average price.",
     "Price_Child_INR": "Child ticket price in Indian Rupees (number only, e.g., 250). If same as adult or no child pricing, write same as adult price.",
@@ -85,14 +86,14 @@ Based on your comprehensive research, provide information in JSON format:
     "Season_Operational_Months": "Best season or operational months (e.g., 'Year-round', 'October to March', 'Closed during monsoon')",
     "Inclusions": "What is included in the basic entry/experience (e.g., 'Entry ticket, Basic guided tour', 'Access to all exhibits')",
     "Exclusions": "What is not included and costs extra (e.g., 'Food and beverages, Photography charges, Special exhibitions')",
-    "Must_Do": "true/false - Is this considered a must-visit attraction in the city? true only if it's widely recommended as essential.",
+    "Must_Do": "true/false - Is this considered a must-visit attraction in the city? true only if it's widely recommended as essential or if it is a very popular tourist attraction which should not be missed.",
     "Group_Friendly": "true/false - Suitable for group visits? true only if there's evidence of group facilities/discounts.",
-    "Offbeat": "true/false - Is this an offbeat/lesser-known attraction? true only if it's not mainstream/touristy.",
-    "Historic_Cultural": "true/false - Does this have historical or cultural significance? true only with clear evidence.",
+    "Offbeat": "true/false - Is this an offbeat/lesser-known attraction? true only if it's not mainstream/touristy and less popular activity but worth visiting.",
+    "Historic_Cultural": "true/false - Does this have historical or cultural significance? true only if it is a popular activitiy related to history or culture of place. ",
     "Party": "true/false - Suitable for parties/celebrations? true only if there's evidence of party facilities/nightlife.",
-    "Pet_Friendly": "true/false - Are pets allowed? true only if there's clear evidence pets are welcome.",
+    "Pet_Friendly": "true/false - Are pets allowed? true only if there's clear evidence pets are welcome or if if the activity can be done with pets..",
     "Adventurous": "true/false - Involves adventure/thrill activities? true only if there are adventure elements.",
-    "Kid_Friendly": "true/false - Suitable for children? true only if there's evidence of kid-friendly features.",
+    "Kid_Friendly": "true/false - Suitable for children? true only if there's evidence of kid-friendly features or if you will suggest it for someone to go with their small kids.",
     "Romantic": "true/false - Suitable for couples/romantic visits? true only if there's evidence of romantic appeal.",
     "Wellness_Relaxation": "true/false - Focused on wellness/relaxation? true only if it offers wellness/spa/meditation facilities.",
     "Senior_Citizen_Friendly": "true/false - Accessible and suitable for senior citizens? true only if there's evidence of senior-friendly facilities."
