@@ -82,7 +82,7 @@ Based on your comprehensive research, provide recommendations in JSON format:
     "Area": "The area of the place, extracted from the Formatted Address if it accurately describes the area of the place, else populate it with the accurate area",
     "Category": "Primary category with recommendation context. It must always be one of - [Accomodation - Wellness, Accomodation - Boutique / Villa / Homestay,  Accomodation - Haveli, Accomodation - Hotel / Resorts]",
     "Description": "A short single line description of the place. Recommendation-focused description explaining why visitors should choose this place, what unique experiences it offers, and what makes it special. Include specific recommendations about what to do, see, or experience here.",
-    "Pool": "Yes/No - Recommended for pool lovers? Include details about pool experience if this is a highlight.",
+    "Pool": "Yes/No - If a there is a clear evidence of pool being available then yes else no.",
     "Pet_Friendly": "Yes/No - Recommended for pet owners? Yes only if there is a proof about it else no. Include specific pet amenities and policies that make it pet-friendly. If it is not suitable for pets, say no and state the reason.",
     "View": "Yes/No - Recommended for scenic views? Yes only if there is a proof about it else no. Specify what types of views and why they're worth visiting for. If it is not suitable for views, say no and state the reason.",
     "Kid_Friendly": "Yes/No - Recommended for families with children? Yes only if there is a proof about it else no. Include specific kid-friendly features and experiences. If it is not suitable for kids, say no and state the reason.",

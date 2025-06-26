@@ -115,7 +115,7 @@ def search_places_with_details(place_name: str, city: str) -> Dict[str, str]:
         photo_urls = []
         api_key = st.secrets["api_keys"]["google_places"]
         
-        for photo in photos_data[:3]:  # Get only first 3 photos
+        for photo in photos_data[:10]:  # Get only first 3 photos
             photo_name = photo.get('name', '')
             if photo_name:
                 # Construct photo URL using the Photo API
@@ -123,7 +123,7 @@ def search_places_with_details(place_name: str, city: str) -> Dict[str, str]:
                 photo_urls.append(photo_url)
         
         # Ensure we have exactly 3 photo URLs (pad with N/A if needed)
-        while len(photo_urls) < 3:
+        while len(photo_urls) < 10:
             photo_urls.append('N/A')
         
         # Extract and process reviews - just the text content
